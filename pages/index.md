@@ -1,7 +1,3 @@
-
-
-![Needful Things Logo](needful-logo.png)
-
 ```daily_KPIs
 select 
 date_trunc('DAY', order_datetime) as order_date,
