@@ -1,9 +1,8 @@
 # Attribution Model
 
-
 ## Orders by Channel
 
-```sql orders_by_channel
+```sql orders
 select 
     channel,
     date_trunc('month', order_datetime) as month,
@@ -12,22 +11,22 @@ select
 from orders
 where order_datetime >= '2021-01-01'
 group by all
-order by month desc, orders
+order by month desc, orders desc
 ```
 
-The largest channels are currently <Value data={orders_by_channel} row=5/>, <Value data={orders_by_channel} row=4/> and <Value data={orders_by_channel} row=3/>.
-
-<DataTable data={orders_by_channel}/>
-
-
+The smallest channels are currently <Value data={orders} row=5/>, <Value data={orders} row=4/> and <Value data={orders} row=3/>.
 
 <AreaChart
     title='Orders attributed to each channel'
-    data={orders_by_channel}
+    data={orders}
     x=month
     y=orders
     series=channel
 />
+
+<DataTable data={orders}/>
+
+
 
 ## CPA - 2021
 
@@ -41,7 +40,7 @@ sum(spend) as total_spend_usd,
 sum(orders) as total_orders,
 round(sum(spend) / sum(orders),2) as cpa_usd0
 
-from ${orders_by_channel}
+from ${orders}
 left join marketing_spend using(channel_month)
 
 group by 1,2,3
