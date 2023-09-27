@@ -11,10 +11,10 @@ select
 from orders
 where order_datetime >= '2021-01-01'
 group by all
-order by month desc, orders
+order by month desc, orders desc
 ```
 
-The largest channels are currently <Value data={orders} row=5/>, <Value data={orders} row=4/> and <Value data={orders} row=3/>.
+The smallest channels are currently <Value data={orders} row=5/>, <Value data={orders} row=4/> and <Value data={orders} row=3/>.
 
 <AreaChart
     title='Orders attributed to each channel'
