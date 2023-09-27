@@ -13,7 +13,7 @@ group by all
 order by month desc, orders
 ```
 
-The largest channels are currently <Value data={orders} row=5/>, <Value data={orders} row=4/> and <Value data={orders} row=3/>.
+The largest channels are currently <Value data={orders} row=5/>, <Value data={orders} row=4/> and <Value data={orders} row=3/>
 
 <BarChart
     title='Orders attributed to each channel'
