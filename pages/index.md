@@ -25,6 +25,6 @@ The smallest channels are currently <Value data={orders} row=5/>, <Value data={o
     series=channel
 />
 
-<DataTable data={orders} rows=all/>
+<DataTable data={orders}/>
 
 
