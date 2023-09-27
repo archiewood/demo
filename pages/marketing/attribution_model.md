@@ -1,11 +1,12 @@
 # Attribution Model
 
+
 ## Orders by Channel
 
 ```sql orders_by_channel
 select 
     channel,
-    date_trunc("MONTH", order_datetime) as month,
+    date_trunc('month', order_datetime) as month,
     channel_month,
     count(*) as orders
 from orders
@@ -16,9 +17,11 @@ order by month desc, orders
 
 The largest channels are currently <Value data={orders_by_channel} row=5/>, <Value data={orders_by_channel} row=4/> and <Value data={orders_by_channel} row=3/>.
 
+<DataTable data={orders_by_channel}/>
 
 
-<BarChart
+
+<AreaChart
     title='Orders attributed to each channel'
     data={orders_by_channel}
     x=month
@@ -47,6 +50,8 @@ order by 6
 
 ```sql total_cpa
 select 
+sum(total_spend_usd) as tot_spend_usd,
+sum(total_orders) as tot_orders,
 round(sum(total_spend_usd) / sum(total_orders),2) as blended_cpa_usd,
 14 as target_cpa_usd,
 (sum(total_spend_usd) / sum(total_orders))/target_cpa_usd - 1 as diff_vs_target_pct
@@ -66,13 +71,29 @@ where month >= '2021-12-01'
 and marketing_channel is not null
 ```
 
+
+
+<BigValue 
+    data={total_cpa} 
+    value=tot_orders
+    fmt='0,000'
+    title='Total Orders'
+/>
+
+<BigValue 
+    data={total_cpa} 
+    value=tot_spend_usd
+    title='Total Spend'
+/>
+
 <BigValue 
     data={total_cpa} 
     value=blended_cpa_usd
     comparison=diff_vs_target_pct
     comparisonTitle='vs target'
     downIsGood
-    />
+    title='Blended CPA'
+/>
 
 
 
