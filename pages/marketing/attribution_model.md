@@ -1,6 +1,5 @@
 # Attribution Model
 
-
 ## Orders by Channel
 
 ```sql orders
