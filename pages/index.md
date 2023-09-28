@@ -1,5 +1,7 @@
 # Attribution Model
 
+SQL and markdown.
+
 ## Orders by Channel
 
 ```sql orders
@@ -8,6 +10,7 @@ select
     date_trunc('month', order_datetime) as month,
     count(*) as orders
 from orders
+where order_datetime >= '2021-01-01'
 group by all
 order by month desc, orders
 ```
