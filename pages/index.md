@@ -1,7 +1,5 @@
 # Attribution Model
 
-SQL and markdown.
-
 ## Orders by Channel
 
 ```sql orders
